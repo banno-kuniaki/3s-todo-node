@@ -1,0 +1,14 @@
+type Task {
+    id: ID
+    name: String!
+    description: String!
+    status: String!
+}
+
+type Query {
+    task: [Task]!
+}
+
+type Mutation {
+    post(name: String!, description: String!, status: String!): Task!
+}

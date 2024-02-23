@@ -1,0 +1,28 @@
+{
+  "name": "3s-todo-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "type": "module",
+  "scripts": {
+    "nodemon": "npx nodemon ApolloServer.js",
+    "tsc": "tsc -w",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^5.10.2",
+    "@types/graphql": "^14.5.0",
+    "apollo-server": "^2.26.2",
+    "apollo-server-types": "^0.10.0",
+    "graphql": "^14.7.0",
+    "prisma": "^5.10.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.19",
+    "nodemon": "^3.0.3"
+  }
+}
