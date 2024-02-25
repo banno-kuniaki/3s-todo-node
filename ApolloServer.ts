@@ -24,13 +24,33 @@ const resolvers = {
       return newTask
     },
     deleteTask: async (parent: any, args: {id: number}, context: {prisma: PrismaClient}) => {
-      console.log(args.id)
+      const task = await prisma.task.findUnique({
+        where: {
+          id: args.id
+        },
+      })
+
+      if (!task) {
+        return {
+          errors: [
+            {
+              message: "削除対象のタスクがありません",
+            }
+          ],
+          task: null,
+        }
+      }
+
       await context.prisma.task.delete({
         where: {
           id: args.id
         }
       });
-      return true
+
+      return {
+        errors: [],
+        task,
+      }
     }
   }
 }

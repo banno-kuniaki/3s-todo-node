@@ -11,5 +11,14 @@ type Query {
 
 type Mutation {
     post(name: String!, description: String!, status: String!): Task!
-    deleteTask(id:Int!): Boolean!
+    deleteTask(id:Int!): deleteResult!
+}
+
+type deleteResult {
+    errors: [Error!]!
+    task: Task
+}
+
+type Error {
+message: String!
 }
