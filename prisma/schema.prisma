@@ -18,5 +18,6 @@ model Task {
   name        String
   description String
   status      String
+  index       Int
   createdAt   DateTime @default(now())
 }

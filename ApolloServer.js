@@ -16,6 +16,7 @@ const resolvers = {
                 data: {
                     name: args.name,
                     description: args.description,
+                    index: args.index,
                     status: args.status
                 }
             });
@@ -45,6 +46,20 @@ const resolvers = {
             return {
                 errors: [],
                 task,
+            };
+        },
+        updateTask: async (parent, args, context) => {
+            const updateTask = await prisma.task.update({
+                data: {
+                    index: args.index
+                },
+                where: {
+                    id: args.id
+                }
+            });
+            return {
+                errors: [],
+                task: updateTask,
             };
         }
     }

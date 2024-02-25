@@ -13,11 +13,12 @@ const resolvers = {
     },
   },
   Mutation: {
-    post: (parent: any, args: { name: string, description: string, status: string }, context: {prisma: PrismaClient}) => {
+    post: (parent: any, args: { name: string, description: string, index: number, status: string }, context: {prisma: PrismaClient}) => {
       const newTask = context.prisma.task.create({
         data: {
           name: args.name,
           description: args.description,
+          index: args.index,
           status: args.status
         }
       })
@@ -51,7 +52,22 @@ const resolvers = {
         errors: [],
         task,
       }
-    }
+    },
+    updateTask:async (parent: any, args: {id: number, index: number}, context: {prisma: PrismaClient}) => {
+      const updateTask = await prisma.task.update({
+      data: {
+        index: args.index
+      },
+      where: {
+        id: args.id
+      }
+    });
+
+    return {
+      errors: [],
+      task: updateTask,
+    };
+  }
   }
 }
 
