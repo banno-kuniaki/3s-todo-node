@@ -20,6 +20,15 @@ const resolvers = {
                 }
             });
             return newTask;
+        },
+        deleteTask: async (parent, args, context) => {
+            console.log(args.id);
+            await context.prisma.task.delete({
+                where: {
+                    id: args.id
+                }
+            });
+            return true;
         }
     }
 };

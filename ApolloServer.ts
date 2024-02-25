@@ -22,6 +22,15 @@ const resolvers = {
         }
       })
       return newTask
+    },
+    deleteTask: async (parent: any, args: {id: number}, context: {prisma: PrismaClient}) => {
+      console.log(args.id)
+      await context.prisma.task.delete({
+        where: {
+          id: args.id
+        }
+      });
+      return true
     }
   }
 }
