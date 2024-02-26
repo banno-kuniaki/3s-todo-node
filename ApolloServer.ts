@@ -53,9 +53,10 @@ const resolvers = {
         task,
       }
     },
-    updateTask:async (parent: any, args: {id: number, index: number}, context: {prisma: PrismaClient}) => {
+    updateTask:async (parent: any, args: {id: number,status: string, index: number}, context: {prisma: PrismaClient}) => {
       const updateTask = await prisma.task.update({
       data: {
+        status: args.status,
         index: args.index
       },
       where: {

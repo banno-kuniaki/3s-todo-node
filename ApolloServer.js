@@ -51,6 +51,7 @@ const resolvers = {
         updateTask: async (parent, args, context) => {
             const updateTask = await prisma.task.update({
                 data: {
+                    status: args.status,
                     index: args.index
                 },
                 where: {

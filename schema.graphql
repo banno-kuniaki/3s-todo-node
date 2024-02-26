@@ -1,5 +1,5 @@
 type Task {
-    id: ID
+    id: Int!
     name: String!
     description: String!
     index: Int!
@@ -13,7 +13,7 @@ type Query {
 type Mutation {
     post(name: String!, description: String!, index: Int! status: String!): Task!
     deleteTask(id:Int!): deleteResult!
-    updateTask(id: Int!, index: Int!): Task!
+    updateTask(id: Int!, status: String!, index: Int!): deleteResult!
 }
 
 type deleteResult {
